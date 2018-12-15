@@ -2,6 +2,12 @@
 ## 设置两个主机的互信
 主机host1到host2的ssh互信设置
 
+- host1-ssh-host2.sh   
+- ssh-copy-id.expect   
+- ssh-keygen.expect   
+
+
+
 ### host1-ssh-host2.sh
 ```
 #!/bin/sh
@@ -97,7 +103,7 @@ exit
 
 ### 执行结果
 ```
-[root@rmq-node3 liulin]# ./host1-ssh-host2.sh 
+[root@rmq-node3 ]# ./host1-ssh-host2.sh 
 1. 登录192.168.35.137,并在该node上生成ssh密钥
 spawn ssh root@192.168.35.137 ssh-keygen
 root@192.168.35.137's password: 
@@ -116,4 +122,6 @@ Last login: Mon Dec 17 01:37:05 2018 from rmq-node3
 
 [root@rmq-node3 ~]# 192.168.35.137和192.168.35.138互信SUCCESS
 ```
+
+
 
