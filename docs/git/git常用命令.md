@@ -58,6 +58,33 @@ git branch
 git checkout newBranch
 ```
 
+#### 创建新分支
+
+从master分支上创建develop分支
+```
+git checkout -b develop master
+
+output: 此时远程还没有develop分支
+$ git branch -a
+* develop
+  master
+  remotes/origin/master
+
+```
+
+推送到远程
+```
+git push origin develop
+
+output: 此时远程能看到develop分支
+$ git branch -a
+* develop
+  master
+  remotes/origin/develop
+  remotes/origin/master
+
+```
+
 ---
 
 ## 分支间的cherry-pick
