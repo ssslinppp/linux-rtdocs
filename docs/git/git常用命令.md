@@ -1,11 +1,11 @@
-## 概述
+# 概述
 
 [果壳中的 Git](https://github.com/geeeeeeeeek/git-recipes/wiki)   
 
 
 ---
   
-## Git仓库
+# Git仓库
 
 ```
 # 创建新的仓库
@@ -33,7 +33,7 @@ git push origin develop:refs/for/develop
 
 ---
 
-## 代码提交
+# 代码提交
 
 修改最后一次提交的信息(可以保持 change-id 不变)
 ```
@@ -42,7 +42,7 @@ git commit --amend
 
 ---
 
-## 分支操作
+# 分支操作
 #### 查看所有分支
 ```
 git branch -a
@@ -87,7 +87,7 @@ $ git branch -a
 
 ---
 
-## 分支间的cherry-pick
+# 分支间的cherry-pick
 
 在release_1.3.1提交了代码，希望将这次的代码提交合并到develop分支上
 
@@ -104,7 +104,7 @@ git push origin develop:refs/for/develop
 
 ---
 
-## 代码回退
+# 代码回退
 
 ```
 git reset cb7c3540f4cd67f9c9aa3780484fc08bcab80e3f  # 回退到指定的提交，扔掉该提交之后的所有提交
