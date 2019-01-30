@@ -10,6 +10,8 @@ kubectl get svc
 
 //查看应用副本数量
 kubectl get deployment
+
+kubectl get namespace
 ```
 
 ---
@@ -20,10 +22,25 @@ kubectl get deployment
 ### master
 master是cluster的大脑，主要职责是`调度`，即：决定将应用放在哪里运行。
 
+`master组件`主要包括（`这些组件只需要在master上运行即可`）：
+- `kube-apiserver`：用于暴露kubernete api
+- `kube-scheduler`：用于在nodes之间调度pod
+- `kube-controller-manager`：管理cluster的各种资源，保证资源处于预期状态；
+- `etcd`：一致性分布式键值存储，集群的数据库；
+- `pod网络（如：flannel）`：保证Pod间能够相互通信。
+
+
 ### Node
 职责：运行容器应用，由master管理;
 
-### pod
+`Node组件`主要包括（`这些组件需要在每个node上运行`）：
+
+- `kubelet`：一个agent，当Scheduler确定在某个node上运行pod后，会将pod的具体配置信息发送到该节点的kubelet，kubelet根据这些信息创建和运行容器，并向master报告运行状态；
+- `kube-proxy`: 简单说：就是实现负载均衡，Service充当pod的负载均衡，Service接收到请求后如何转发到Pod？这就是kube-proxy做的事情；
+- `Pod网络（如flannel）`：保证pod之间相互通信；
+
+
+### Pod
 Pod是容器的集合，通常会将紧密相关的一组容器放在一个Pod中，同一个Pod中所有的容器共享IP地址和Port空间，也就是说，他们在同一个Network namespace中。
 
 POD是kubernetes调度的最小单位，同一个Pod中的容器始终被一起调度。   
@@ -53,3 +70,16 @@ Kubernetes运行容器（Pod）和访问容器（Pod）这两项任务，分别�
 
 ### Namespace
 Namespace可以将一个物理Cluster逻辑划分为多个虚拟Cluster，每个cluster就是一个Namespace。不同Namespace里的资源是完全隔离的。
+
+
+---
+
+## 组件
+### kubelet
+运行在所有nodes上，负责启动pod和容器
+
+### kubeadm
+运行在所有nodes上,用于初始化集群
+
+### kubectl
+运行在所有nodes上，命令行工具
