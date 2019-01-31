@@ -12,6 +12,16 @@ kubectl get svc
 kubectl get deployment
 
 kubectl get namespace
+
+//为node1节点添加label (key=disktype, value=ssd)
+kubectl label node node1 disktype=ssd
+
+//显示节点的Label信息
+kubectl get nodes --show-labels
+
+//删除label（key=disktype）
+kubectl label node node1 disktype-
+
 ```
 
 ---
