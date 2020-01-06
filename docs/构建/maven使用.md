@@ -17,6 +17,7 @@ mvn clean package -U -DskipTests -f pom.xml
 ```
 git clone -b develop_pek "ssh://liulin@gerrit.cmss.com:29418/BC-EPIC/epic-kingdew" && scp -p -P 29418 liulin@gerrit.cmss.com:hooks/commit-msg "epic-kingdew/.git/hooks/"
 cd epic-kingdew
+git checkout release_pek_yyyyMMdd
 sed -i "s/DEV-PEK-SNAPSHOT/RELEASE-PEK-20200103-SNAPSHOT/g" `grep DEV-PEK-SNAPSHOT -rl .`
 git add .
 git commit
