@@ -14,6 +14,7 @@ mvn clean package -U -DskipTests -f pom.xml
 
 这里没有采用上述的方式，是因为处理pom需要更新外，Dockerfile、Jenkinsfiles 也需要更新
 
+批量修改版本号，并提交代码
 ```
 git clone -b develop_pek "ssh://liulin@gerrit.cmss.com:29418/BC-EPIC/epic-kingdew" && scp -p -P 29418 liulin@gerrit.cmss.com:hooks/commit-msg "epic-kingdew/.git/hooks/"
 cd epic-kingdew
@@ -25,4 +26,11 @@ git status # 查询修改后的文件，应该包括pom.xml、Dockerfile和Jenki
 git add .
 git commit
 git push origin release_pek_yyyyMMdd:refs/for/release_pek_yyyyMMdd
+```
+
+上述操作执行完成后，对基础model、client等进行打包打包
+```
+mvn clean deploy -DskipTests -f epic-base/pom.xml
+mvn clean deploy -DskipTests -f epic-base/epic-base-dependeny/base-model-dependeny/pom.xml
+mvn clean deploy -DskipTests -f epic-base/epic-base-dependeny/base-client-dependeny/pom.xml
 ```
