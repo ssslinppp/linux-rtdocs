@@ -17,9 +17,12 @@ mvn clean package -U -DskipTests -f pom.xml
 ```
 git clone -b develop_pek "ssh://liulin@gerrit.cmss.com:29418/BC-EPIC/epic-kingdew" && scp -p -P 29418 liulin@gerrit.cmss.com:hooks/commit-msg "epic-kingdew/.git/hooks/"
 cd epic-kingdew
+git branch # 查询待修改分支
 git checkout release_pek_yyyyMMdd
+git branch
 sed -i "s/DEV-PEK-SNAPSHOT/RELEASE-PEK-20200103-SNAPSHOT/g" `grep DEV-PEK-SNAPSHOT -rl .`
+git status # 查询修改后的文件，应该包括pom.xml、Dockerfile和Jenkins相关文件
 git add .
 git commit
-git push xxx xxx
+git push origin release_pek_yyyyMMdd:refs/for/release_pek_yyyyMMdd
 ```
