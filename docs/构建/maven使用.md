@@ -15,8 +15,10 @@ mvn clean package -U -DskipTests -f pom.xml
 这里没有采用上述的方式，是因为处理pom需要更新外，Dockerfile、Jenkinsfiles 也需要更新
 
 ```
-git clone -b develop_dev "ssh://liulin@gerrit.cmss.com:29418/BC-EPIC/epic-kingdew" && scp -p -P 29418 liulin@gerrit.cmss.com:hooks/commit-msg "epic-kingdew/.git/hooks/"
+git clone -b develop_pek "ssh://liulin@gerrit.cmss.com:29418/BC-EPIC/epic-kingdew" && scp -p -P 29418 liulin@gerrit.cmss.com:hooks/commit-msg "epic-kingdew/.git/hooks/"
 cd epic-kingdew
 sed -i "s/DEV-PEK-SNAPSHOT/RELEASE-PEK-20200103-SNAPSHOT/g" `grep DEV-PEK-SNAPSHOT -rl .`
+git add .
+git commit
 git push xxx xxx
 ```
