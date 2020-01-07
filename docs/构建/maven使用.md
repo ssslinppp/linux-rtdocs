@@ -33,4 +33,5 @@ git push origin release_pek_yyyyMMdd:refs/for/release_pek_yyyyMMdd
 mvn clean deploy -DskipTests -f epic-base/pom.xml
 mvn clean deploy -DskipTests -f epic-base/epic-base-dependeny/base-model-dependeny/pom.xml
 mvn clean deploy -DskipTests -f epic-base/epic-base-dependeny/base-client-dependeny/pom.xml
+mvn clean deploy -DskipTests -f epic-base/epic-base-dependeny/base-dependeny/pom.xml
 ```
